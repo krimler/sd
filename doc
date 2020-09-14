@@ -1,4 +1,29 @@
 function FindProxyForURL(url, host) {
+ var VPN_PROXY = "VPN"
+ var INT_PROXY = "INT"
+
+ var epa = myIpAddress()
+ if (isInNet(epa, '10.0.0.0', '255.0.0.0'))
+     return "VPN_PROXY 1"
+
+ if(isInNet(epa, '172.16.0.0', '255.240.0.0'))
+     return 'VPN_PROXY 2';
+
+ if (isInNet(epa, '192.168.0.0', '255.255.0.0'))
+      return 'VPN_PROXY 3';
+ if(isInNet(epa, '100.64.0.0', '255.192.0.0'))
+     return "carrier-grade NAT"
+
+ if(isInNet(epa, '169.254.1.0', '169.254.254.255'))
+     return "link-local"
+
+ if(isInNet(epa, '127.0.0.1', '255.0.0.0'))
+      return "localhost"
+ return epa
+
+ }
+-------
+function FindProxyForURL(url, host) {
 var epa = myIpAddress()
 if (isInNet(epa, "192.168.0.1", "255.255.255.0"))
   return "PROXY 15.207.218.146:80";
