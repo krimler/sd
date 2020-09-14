@@ -1,3 +1,18 @@
+function FindProxyForURL(url, host) {
+var epa = myIpAddress()
+if (isInNet(epa, "192.168.0.1", "255.255.255.0"))
+  return "PROXY 15.207.218.146:80";
+
+if (isInNet(myIpAddress(), '10.10.0.0', '255.255.0.0'))
+    return '10.10.0.0';
+if(isInNet(epa, '172.18.0.1', '255.255.0.0'))
+    return 'sunshine';
+return epa
+
+}
+https://app.thorsen.pm/proxyforurl
+https://www.quora.com/What-is-the-significance-of-IP-addresses-starting-with-172
+
 How to answer a system design question?
 
 (1) FEATURE EXPECTATIONS [5 min]
